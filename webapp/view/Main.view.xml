@@ -1,0 +1,9 @@
+<mvc:View controllerName="zfiempreport.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page">
+    <content>
+    <core:Fragment fragmentName="zfiempreport.fragment.report" type="XML"/>
+    </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,265 @@
+<core:FragmentDefinition  xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	 xmlns:f="sap.ui.layout.form"
+xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:custData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+   
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:st="sap.ui.comp.smarttable"
+   
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:sv="sap.ui.comp.smartvariants">
+	 
+	 <VBox class="sapUiNoContentPadding sapUiNoMargin">
+       	<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+			<Label required="true" text="{i18n>EmployeeID}" />
+				<Input  value="{LocalModel>/results/PernrFrom}"  />
+				<Text text="To"  class="zto">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>
+					</Text>
+                <Input  value="{LocalModel>/results/PernrTo}" >
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+				</Input>
+				<Button icon="sap-icon://arrow-right" press="onpressPernr" type="Emphasized" width="20%">
+				<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+					</Button>
+
+				<Label text="{i18n>Expense}" />
+				<Input  value="{LocalModel>/results/ExpenseFrom}"  />
+				<Text text="To"  class="zto">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>
+					</Text>
+                <Input  value="{LocalModel>/results/ExpenseTo}" >
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+				</Input>
+				<Button icon="sap-icon://arrow-right" press="onpressExpense" type="Emphasized" width="20%">
+				<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+					</Button>
+
+				<Label text="{i18n>ExpsenseRequestNumber}" />
+				<Input  value="{LocalModel>/results/ClaimnoFrom}"  />
+				<Text text="To"  class="zto">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>
+					</Text>
+                <Input  value="{LocalModel>/results/ClaimnoTo}" >
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+				</Input>
+				<Button icon="sap-icon://arrow-right" press="onpressClaimno" type="Emphasized" width="20%">
+				<layoutData>
+						<l:GridData span="XL1 L2 M2 S1" />
+					</layoutData>
+					</Button>
+
+				<Label text="{i18n>CreationDate}" />
+				<DateRangeSelection width="40%"
+			value= "{
+				'type': 'sap.ui.model.type.DateInterval',
+				'formatOptions': {
+					'pattern': 'dd/MM/yyyy'
+				},
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'LocalModel>/results/DateFrom'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'LocalModel>/results/DateTo'
+					}
+				]
+			}"
+			change="handleChange"/>
+
+			<Label text="{i18n>ClaimStatus}" />
+			<ComboBox items="{Status>/results}" width="40%" selectedKey="{LocalModel>/results/Status}">
+                                 <core:Item key="{Status>Status}" text="{Status>Text}"/>
+                                </ComboBox>
+			
+			<Label text="" />
+			<HBox >
+			<Button text="Go" type="Emphasized" press="refreshTable"/>
+			<Button text="Clear" type="Emphasized" press="onClear" class="zbutton"/>
+			</HBox>
+			
+			</f:content>
+		</f:SimpleForm>
+    </VBox>
+	<!-- initiallyVisibleFields="Pernr,Perna,Kostl,Ktext,Abtei,Claimno,Crtdat,ExpType,Saknr,Stext,Amt,Curr,Comments,Status,Belnr" -->
+
+<st:SmartTable id="smartTable" header="" entitySet="CLAIMREQSet" 
+tableType="ResponsiveTable" dataReceived="onDataReceived"
+smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zfleetadmindash.table"
+				showRowCount="true" 
+				beforeRebindTable="onBeforeRebindTable"  placeToolbarInTable="true"
+				
+				ignoreFromPersonalisation=""
+				requestAtLeastFields=""
+				useExportToExcel="false"
+				class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true">
+				<st:customToolbar>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://excel-attachment" press="onExport" />
+						</Toolbar>
+				</st:customToolbar>
+				<Table growing="true" growingThreshold="20" growingScrollToLoad="true" rememberSelections="false"
+					 >
+					<columns>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Pernr", "columnIndex": 1, "leadingProperty": "Pernr", "sortProperty": "Pernr", "filterProperty": "Pernr"}' />
+							</customData>
+							<Text text="Employee ID" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Perna", "columnIndex": 2, "leadingProperty": "Perna", "sortProperty": "Perna", "filterProperty": "Perna"}' />
+							</customData>
+							<Text text="Employee Name" />
+						</Column> 
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Kostl", "columnIndex": 3, "leadingProperty": "Kostl", "sortProperty": "Kostl", "filterProperty": "Kostl"}'/>
+							</customData>
+							<Text text="Cost Center" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Ktext", "columnIndex": 4, "leadingProperty": "Ktext", "sortProperty": "Ktext", "filterProperty": "Ktext"}' />
+							</customData>
+							<Text text="Cost Center Name" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Abtei", "columnIndex": 5, "leadingProperty": "Abtei", "sortProperty": "Abtei", "filterProperty": "Abtei"}' />
+							</customData>
+							<Text text="Department" />
+						</Column> 
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 6, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
+							</customData>
+							<Text text="Request Number" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Crtdat", "columnIndex": 7, "leadingProperty": "Crtdat", "sortProperty": "Crtdat", "filterProperty": "Crtdat", "type":"date"}' />
+							</customData>
+							<Text text="Request Created Date" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "ExpType", "columnIndex": 8, "leadingProperty": "ExpType", "sortProperty": "ExpType", "filterProperty": "ExpType", "type":"date"}' />
+							</customData>
+							<Text text="Expense Details" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Saknr", "columnIndex": 9, "leadingProperty": "Saknr", "sortProperty": "Saknr", "filterProperty": "Saknr"}' />
+							</customData>
+							<Text text="G/L Account" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Stext", "columnIndex": 10, "leadingProperty": "Stext", "sortProperty": "Stext", "filterProperty": "Stext"}' />
+							</customData>
+							<Text text="G/L Description" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Claimdat", "columnIndex": 11, "leadingProperty": "Claimdat", "sortProperty": "Claimdat", "filterProperty": "Claimdat"}' />
+							</customData>
+							<Text text="Expense Date" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Amt", "columnIndex": 12, "leadingProperty": "Amt", "sortProperty": "Amt", "filterProperty": "Amt"}' />
+							</customData>
+							<Text text="Expense Amount" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Curr", "columnIndex": 13, "leadingProperty": "Curr", "sortProperty": "Curr", "filterProperty": "Curr"}' />
+							</customData>
+							<Text text="Currency" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Comments", "columnIndex": 14, "leadingProperty": "Comments", "sortProperty": "Comments", "filterProperty": "Comments"}' />
+							</customData>
+							<Text text="Comments" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Status", "columnIndex": 15, "leadingProperty": "Status", "sortProperty": "Status", "filterProperty": "Status"}' />
+							</customData>
+							<Text text="Claim Status" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Belnr", "columnIndex": 16, "leadingProperty": "Belnr", "sortProperty": "Belnr", "filterProperty": "Belnr"}' />
+							</customData>
+							<Text text="FI Document" />
+						</Column>
+						
+					</columns>
+					<items>
+						<ColumnListItem>
+							<Text text="{path: 'Pernr'}" />
+							<Text text="{path: 'Perna'}" /> 
+							<Text text="{path: 'Kostl'}" />
+							<!-- <Text text="{path: 'Kostl', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'MM/dd/yyyy'}}" /> -->
+							<Text text="{path: 'Ktext'}" />
+							 <Text text="{path: 'Abtei'}" /> 
+							<Text text="{path: 'Claimno'}" />
+							<Text text="{path: 'Crtdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />
+							<Text text="{path: 'ExpType'}" />
+							<Text text="{path: 'Saknr'}" />
+							<Text text="{path: 'Stext'}" />
+							<Text text="{path: 'Claimdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />
+							<Text text="{path: 'Amt'}" />
+							<Text text="{path: 'Curr'}" />
+							<Text text="{path: 'Comments'}" />
+							<Text text="{path: 'Status', type: 'sap.ui.model.type.String', formatter: '.formatstatusapp' }"/>
+							<Text text="{path: 'Belnr'}" />
+						</ColumnListItem>
+					</items>
+				</Table>
+			</st:SmartTable>
+            
+</core:FragmentDefinition>
