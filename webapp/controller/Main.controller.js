@@ -29,8 +29,33 @@ sap.ui.define([
             var oval=[];
             oval.push(sval);
             this.getOwnerComponent().getModel("onpressPernr").setProperty("/results",oval);
-            this.getOwnerComponent().getModel("onpressClaimno").setProperty("/results",oval);
-            this.getOwnerComponent().getModel("onpressExpenseTo").setProperty("/results",oval);
+            this.getOwnerComponent().getModel("onpressClaimno").setProperty("/results", oval);
+            this.getOwnerComponent().getModel("onpressExpenseTo").setProperty("/results", oval);
+
+            this.suser = '';
+            if (sap.ushell !== undefined) {
+                this.suser = sap.ushell.Container.getService("UserInfo").getId();
+            }
+            if (this.suser === '') {
+                this.suser = 'NTT_VENU';
+            }
+
+
+             this.stype = '';
+            if (window.location.href.indexOf("zfiempclaimreq-monitor") !== -1) {
+                this.stype = "admin";
+                var sval={
+                    employee: true
+                };
+                this.getOwnerComponent().getModel("Header").setProperty("/data",sval);
+            }
+            else if (window.location.href.indexOf("zfiempclaimreq-track") !== -1) {
+                this.stype = "employee";
+                var sval={
+                    employee:false
+                };
+                this.getOwnerComponent().getModel("Header").setProperty("/data",sval);
+            }
         },
         onGoFilter: function() {
                 
@@ -75,7 +100,7 @@ sap.ui.define([
                     aFilters.push(filter);
                 }
 
-                debugger;
+                
                 var oPernr = this.getOwnerComponent().getModel("onpressPernr").getProperty("/results");
                 var oExpense = this.getOwnerComponent().getModel("onpressExpenseTo").getProperty("/results");
                 var oclaimno =this.getOwnerComponent().getModel("onpressClaimno").getProperty("/results");
@@ -100,6 +125,11 @@ sap.ui.define([
                         aFilters.push(filter);
                     }
                 }.bind(this));
+                
+                if(this.stype === "employee"){
+                    var filter = new sap.ui.model.Filter("Crtby", sap.ui.model.FilterOperator.EQ, this.suser);
+                        aFilters.push(filter);
+                }
                 debugger;
                 return aFilters;
         },
@@ -149,11 +179,13 @@ sap.ui.define([
            this.refreshTable();
         },
         refreshTable: function(oEvent){
-            if (this.getView().getModel("LocalModel").getData().results.PernrFrom === "") {
-                MessageBox.error("Employee ID is mandatory");
-            }else{
-                this.byId("smartTable").rebindTable();
-            } 
+            // if (this.getView().getModel("LocalModel").getData().results.PernrFrom === "") {
+            //     MessageBox.error("Employee ID is mandatory");
+            // }else{
+            //     this.byId("smartTable").rebindTable();
+            // } 
+            
+            this.byId("smartTable").rebindTable();
             
         },
         buildFiltersForCustomFields: function() {

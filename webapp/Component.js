@@ -27,6 +27,7 @@ sap.ui.define([
             this.setModel(new sap.ui.model.json.JSONModel(), "onpressExpenseTo");
             this.setModel(new sap.ui.model.json.JSONModel(), "onpressClaimno");
             this.setModel(new sap.ui.model.json.JSONModel(), "onpress");
+            this.setModel(new sap.ui.model.json.JSONModel(), "Header");
             // enable routing
             this.getRouter().initialize();
         }

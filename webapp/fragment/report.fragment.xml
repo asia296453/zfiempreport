@@ -31,19 +31,20 @@ xmlns:l="sap.ui.layout"
 			columnsM="1"
 			singleContainerFullSize="false" >
 			<f:content>
-			<Label required="true" text="{i18n>EmployeeID}" />
-				<Input  value="{LocalModel>/results/PernrFrom}"  />
-				<Text text="To"  class="zto">
+			<Label text="{i18n>EmployeeID}"  visible="{Header>/data/employee}"/>
+				<Input  value="{LocalModel>/results/PernrFrom}" visible="{Header>/data/employee}" />
+				<Text text="To"  class="zto" visible="{Header>/data/employee}">
 				<layoutData>
 						<l:GridData span="XL1 L1 M1 S1" />
 					</layoutData>
 					</Text>
-                <Input  value="{LocalModel>/results/PernrTo}" >
+                <Input  value="{LocalModel>/results/PernrTo}" visible="{Header>/data/employee}">
 					<layoutData>
 						<l:GridData span="XL1 L2 M2 S1" />
 					</layoutData>
 				</Input>
-				<Button icon="sap-icon://arrow-right" press="onpressPernr" type="Emphasized" width="20%">
+				<Button icon="sap-icon://arrow-right" press="onpressPernr" type="Emphasized" width="20%" 
+				visible="{Header>/data/employee}">
 				<layoutData>
 						<l:GridData span="XL1 L2 M2 S1" />
 					</layoutData>
@@ -220,27 +221,38 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Comments", "columnIndex": 14, "leadingProperty": "Comments", "sortProperty": "Comments", "filterProperty": "Comments"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Ctext", "columnIndex": 14, "leadingProperty": "Ctext", "sortProperty": "Ctext", "filterProperty": "Ctext"}' />
+							</customData>
+							<Text text="Claim Description" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Comments", "columnIndex": 15, "leadingProperty": "Comments", "sortProperty": "Comments", "filterProperty": "Comments"}' />
 							</customData>
 							<Text text="Comments" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Status", "columnIndex": 15, "leadingProperty": "Status", "sortProperty": "Status", "filterProperty": "Status"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Status", "columnIndex": 16, "leadingProperty": "Status", "sortProperty": "Status", "filterProperty": "Status"}' />
 							</customData>
 							<Text text="Claim Status" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Belnr", "columnIndex": 16, "leadingProperty": "Belnr", "sortProperty": "Belnr", "filterProperty": "Belnr"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Belnr", "columnIndex": 17, "leadingProperty": "Belnr", "sortProperty": "Belnr", "filterProperty": "Belnr"}' />
 							</customData>
 							<Text text="FI Document" />
 						</Column>
-						
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Message", "columnIndex": 18, "leadingProperty": "Message", "sortProperty": "Message", "filterProperty": "Message"}' />
+							</customData>
+							<Text text="Message" />
+						</Column>
 					</columns>
 					<items>
 						<ColumnListItem>
-							<Text text="{path: 'Pernr'}" />
+							<Link text="{path: 'Pernr'}" press="handleLinkPress" />
 							<Text text="{path: 'Perna'}" /> 
 							<Text text="{path: 'Kostl'}" />
 							<!-- <Text text="{path: 'Kostl', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'MM/dd/yyyy'}}" /> -->
@@ -254,9 +266,11 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 							<Text text="{path: 'Claimdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />
 							<Text text="{path: 'Amt'}" />
 							<Text text="{path: 'Curr'}" />
+							<Text text="{path: 'Ctext'}" />
 							<Text text="{path: 'Comments'}" />
 							<Text text="{path: 'Status', type: 'sap.ui.model.type.String', formatter: '.formatstatusapp' }"/>
 							<Text text="{path: 'Belnr'}" />
+							<Text text="{path: 'Message'}" />
 						</ColumnListItem>
 					</items>
 				</Table>

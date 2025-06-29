@@ -280,6 +280,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                     label: "Currency",
                     property: 'Curr'
                 }, {
+                    label: "Claim Description",
+                    property: 'Ctext'
+                }, {
                     label: "Comments",
                     property: 'Comments'
                 }, {
@@ -288,9 +291,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                 }, {
                     label: "FI Document",
                     property: 'Belnr'
+                }, {
+                    label: "Message",
+                    property: 'Message'
                 }
 
             ];
+        },
+        handleLinkPress: function (oevent) {
+            debugger;
+            var sclaimno=oevent.getSource().getProperty("text");
+            var xnavservice = sap.ushell && sap.ushell.Container && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation");
+            var href = (xnavservice && xnavservice.hrefForExternal({
+                target: { semanticObject: "zfiempclaimreq", action: "display" },
+                params: { "Claimno": sclaimno }
+            })) || "";
+            var finalUrl = window.location.href.split("#")[0] + href;
+            if(finalUrl.indexOf("?Claimno") !== -1)
+            {
+                finalUrl.replaceAll("?Claimno","&Claimno");
+            }
+            sap.m.URLHelper.redirect(finalUrl, true);
         },
         formatstatusapp: function (sText) {
             var sTxt = '';
