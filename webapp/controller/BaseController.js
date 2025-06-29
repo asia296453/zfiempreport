@@ -303,14 +303,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
             var sclaimno=oevent.getSource().getProperty("text");
             var xnavservice = sap.ushell && sap.ushell.Container && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation");
             var href = (xnavservice && xnavservice.hrefForExternal({
-                target: { semanticObject: "zfiempclaimreq", action: "display" },
+                target: { semanticObject: "zfiempclaimreq", action: "lookup" },
                 params: { "Claimno": sclaimno }
             })) || "";
-            var finalUrl = window.location.href.split("#")[0] + href;
-            if(finalUrl.indexOf("?Claimno") !== -1)
-            {
-                finalUrl.replaceAll("?Claimno","&Claimno");
+            debugger;
+            if (href.indexOf("&sap-app-origin-hint=") !== -1) {
+                href.replaceAll("&sap-app-origin-hint=", "");
             }
+            var sval = href.split("?");
+
+            var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];
+            debugger;
             sap.m.URLHelper.redirect(finalUrl, true);
         },
         formatstatusapp: function (sText) {
