@@ -280,7 +280,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                     label: "Currency",
                     property: 'Curr'
                 }, {
-                    label: "Claim Description",
+                    label: "Description",
                     property: 'Ctext'
                 }, {
                     label: "Comments",
