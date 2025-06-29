@@ -252,13 +252,13 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 					</columns>
 					<items>
 						<ColumnListItem>
-							<Link text="{path: 'Pernr'}" press="handleLinkPress" />
+						<Text text="{path: 'Pernr'}" /> 
 							<Text text="{path: 'Perna'}" /> 
 							<Text text="{path: 'Kostl'}" />
 							<!-- <Text text="{path: 'Kostl', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'MM/dd/yyyy'}}" /> -->
 							<Text text="{path: 'Ktext'}" />
-							 <Text text="{path: 'Abtei'}" /> 
-							<Text text="{path: 'Claimno'}" />
+							 <Text text="{path: 'Abtei'}" /> 							
+							<Link text="{path: 'Claimno'}" press="handleLinkPress" />
 							<Text text="{path: 'Crtdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />
 							<Text text="{path: 'ExpType'}" />
 							<Text text="{path: 'Saknr'}" />
