@@ -203,7 +203,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
         },
         onDataReceived: function(oControlEvent) {
             var itemCount = oControlEvent.getParameters().getParameter('data')['results'];
-            this.getView().getModel("tabledata").setProperty("/results",itemCount);
+            // this.getView().getModel("tabledata").setProperty("/results",itemCount);
            
         },
         onExport: function (OEvt) {

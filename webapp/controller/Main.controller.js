@@ -136,14 +136,9 @@ sap.ui.define([
         onBeforeRebindTable: function(oEvent) {
             var oBindingParams = oEvent.getParameter("bindingParams");
             var aStandardFilters = oBindingParams.filters;
-            var aCustomFilters = this.onGoFilter();//this.buildFiltersForCustomFields();
-          //  var ofilter = this.setfilter();
-            // oBindingParams.filters = [new Filter(
-            //     {filters: aStandardFilters.concat(aCustomFilters), and: true}
-            // )];
-         //   oBindingParams.filters = [new Filter(aCustomFilters)];
+            var aCustomFilters = this.onGoFilter();
             oBindingParams.filters = aCustomFilters;
-            
+            this.getOdata("/CLAIMREQSet","tabledata",aCustomFilters);
         },
         onClear: function(oEvent) {
             var sval = {
