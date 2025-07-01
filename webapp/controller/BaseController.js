@@ -254,10 +254,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                     label: "Department",
                     property: 'Abtei'
                 },  {
-                    label: "Request Number",
+                    label: "Claim Number",
                     property: 'Claimno'
                 },{
-                    label: "Request Created Date",
+                    label: "Claim Created Date",
                     property: 'Crtdat',
 					type: EdmType.Date
                 }, {

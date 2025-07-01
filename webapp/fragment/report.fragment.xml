@@ -175,13 +175,13 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 							<customData>
 								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 6, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
 							</customData>
-							<Text text="Request Number" />
+							<Text text="Claim Number" />
 						</Column>
 						<Column>
 							<customData>
 								<core:CustomData key="p13nData" value='\{"columnKey": "Crtdat", "columnIndex": 7, "leadingProperty": "Crtdat", "sortProperty": "Crtdat", "filterProperty": "Crtdat", "type":"date"}' />
 							</customData>
-							<Text text="Request Created Date" />
+							<Text text="Claim Created Date" />
 						</Column>
 						<Column>
 							<customData>
