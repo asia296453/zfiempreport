@@ -120,9 +120,9 @@ xmlns:l="sap.ui.layout"
 			</f:content>
 		</f:SimpleForm>
     </VBox>
-	<!-- initiallyVisibleFields="Pernr,Perna,Kostl,Ktext,Abtei,Claimno,Crtdat,ExpType,Saknr,Stext,Amt,Curr,Comments,Status,Belnr" -->
+	<!-- initiallyVisibleFields="Pernr,Perna,Kostl,Ktext,Abtei,Claimno,Crtdat,Exptype,Saknr,Stext,Amt,Curr,Comments,Status,Belnr" -->
 
-<st:SmartTable id="smartTable" header="" entitySet="CLAIMREQSet" 
+<st:SmartTable id="smartTable" header="" entitySet="CRHRDITMSet" 
 tableType="ResponsiveTable" dataReceived="onDataReceived"
 smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zfleetadmindash.table"
 				showRowCount="true" 
@@ -141,126 +141,135 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 				<Table growing="true" growingThreshold="20" growingScrollToLoad="true" rememberSelections="false"
 					 >
 					<columns>
-						<Column>
+					<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Pernr", "columnIndex": 1, "leadingProperty": "Pernr", "sortProperty": "Pernr", "filterProperty": "Pernr"}' />
-							</customData>
-							<Text text="Employee ID" />
-						</Column>
-						<Column>
-							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Perna", "columnIndex": 2, "leadingProperty": "Perna", "sortProperty": "Perna", "filterProperty": "Perna"}' />
-							</customData>
-							<Text text="Employee Name" />
-						</Column> 
-						<Column>
-							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Kostl", "columnIndex": 3, "leadingProperty": "Kostl", "sortProperty": "Kostl", "filterProperty": "Kostl"}'/>
-							</customData>
-							<Text text="Cost Center" />
-						</Column>
-						<Column>
-							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Ktext", "columnIndex": 4, "leadingProperty": "Ktext", "sortProperty": "Ktext", "filterProperty": "Ktext"}' />
-							</customData>
-							<Text text="Cost Center Name" />
-						</Column>
-						<Column>
-							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Abtei", "columnIndex": 5, "leadingProperty": "Abtei", "sortProperty": "Abtei", "filterProperty": "Abtei"}' />
-							</customData>
-							<Text text="Department" />
-						</Column> 
-						<Column>
-							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 6, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 1, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
 							</customData>
 							<Text text="Claim Number" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Crtdat", "columnIndex": 7, "leadingProperty": "Crtdat", "sortProperty": "Crtdat", "filterProperty": "Crtdat", "type":"date"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Claimitem", "columnIndex": 2, "leadingProperty": "Claimitem", "sortProperty": "Claimitem", "filterProperty": "Claimitem" , "type":"date"}' />
+							</customData>
+							<Text text="Claim Item" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Pernr", "columnIndex": 3, "leadingProperty": "Pernr", "sortProperty": "Pernr", "filterProperty": "Pernr"}' />
+							</customData>
+							<Text text="Employee ID" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Perna", "columnIndex": 4, "leadingProperty": "Perna", "sortProperty": "Perna", "filterProperty": "Perna"}' />
+							</customData>
+							<Text text="Employee Name" />
+						</Column> 
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Kostl", "columnIndex": 5, "leadingProperty": "Kostl", "sortProperty": "Kostl", "filterProperty": "Kostl"}'/>
+							</customData>
+							<Text text="Cost Center" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Ktext", "columnIndex": 6, "leadingProperty": "Ktext", "sortProperty": "Ktext", "filterProperty": "Ktext"}' />
+							</customData>
+							<Text text="Cost Center Name" />
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Abtei", "columnIndex": 7, "leadingProperty": "Abtei", "sortProperty": "Abtei", "filterProperty": "Abtei"}' />
+							</customData>
+							<Text text="Department" />
+						</Column> 
+						
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Crtdat", "columnIndex": 8, "leadingProperty": "Crtdat", "sortProperty": "Crtdat", "filterProperty": "Crtdat", "type":"date"}' />
 							</customData>
 							<Text text="Claim Created Date" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "ExpType", "columnIndex": 8, "leadingProperty": "ExpType", "sortProperty": "ExpType", "filterProperty": "ExpType", "type":"date"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Exptype", "columnIndex": 9, "leadingProperty": "Exptype", "sortProperty": "Exptype", "filterProperty": "Exptype", "type":"date"}' />
 							</customData>
 							<Text text="Expense Details" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Saknr", "columnIndex": 9, "leadingProperty": "Saknr", "sortProperty": "Saknr", "filterProperty": "Saknr"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Saknr", "columnIndex": 10, "leadingProperty": "Saknr", "sortProperty": "Saknr", "filterProperty": "Saknr"}' />
 							</customData>
 							<Text text="G/L Account" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Stext", "columnIndex": 10, "leadingProperty": "Stext", "sortProperty": "Stext", "filterProperty": "Stext"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Stext", "columnIndex": 11, "leadingProperty": "Stext", "sortProperty": "Stext", "filterProperty": "Stext"}' />
 							</customData>
 							<Text text="G/L Description" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Claimdat", "columnIndex": 11, "leadingProperty": "Claimdat", "sortProperty": "Claimdat", "filterProperty": "Claimdat"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Claimdat", "columnIndex": 12, "leadingProperty": "Claimdat", "sortProperty": "Claimdat", "filterProperty": "Claimdat"}' />
 							</customData>
 							<Text text="Expense Date" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Amt", "columnIndex": 12, "leadingProperty": "Amt", "sortProperty": "Amt", "filterProperty": "Amt"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Amt", "columnIndex": 13, "leadingProperty": "Amt", "sortProperty": "Amt", "filterProperty": "Amt"}' />
 							</customData>
 							<Text text="Expense Amount" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Curr", "columnIndex": 13, "leadingProperty": "Curr", "sortProperty": "Curr", "filterProperty": "Curr"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Curr", "columnIndex": 14, "leadingProperty": "Curr", "sortProperty": "Curr", "filterProperty": "Curr"}' />
 							</customData>
 							<Text text="Currency" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Ctext", "columnIndex": 14, "leadingProperty": "Ctext", "sortProperty": "Ctext", "filterProperty": "Ctext"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Ctext", "columnIndex": 15, "leadingProperty": "Ctext", "sortProperty": "Ctext", "filterProperty": "Ctext"}' />
 							</customData>
 							<Text text="Description" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Comments", "columnIndex": 15, "leadingProperty": "Comments", "sortProperty": "Comments", "filterProperty": "Comments"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Comments", "columnIndex": 16, "leadingProperty": "Comments", "sortProperty": "Comments", "filterProperty": "Comments"}' />
 							</customData>
 							<Text text="Comments" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Status", "columnIndex": 16, "leadingProperty": "Status", "sortProperty": "Status", "filterProperty": "Status"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Status", "columnIndex": 17, "leadingProperty": "Status", "sortProperty": "Status", "filterProperty": "Status"}' />
 							</customData>
 							<Text text="Claim Status" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Belnr", "columnIndex": 17, "leadingProperty": "Belnr", "sortProperty": "Belnr", "filterProperty": "Belnr"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Belnr", "columnIndex": 18, "leadingProperty": "Belnr", "sortProperty": "Belnr", "filterProperty": "Belnr"}' />
 							</customData>
 							<Text text="FI Document" />
 						</Column>
 						<Column>
 							<customData>
-								<core:CustomData key="p13nData" value='\{"columnKey": "Message", "columnIndex": 18, "leadingProperty": "Message", "sortProperty": "Message", "filterProperty": "Message"}' />
+								<core:CustomData key="p13nData" value='\{"columnKey": "Message", "columnIndex": 19, "leadingProperty": "Message", "sortProperty": "Message", "filterProperty": "Message"}' />
 							</customData>
 							<Text text="Message" />
 						</Column>
 					</columns>
 					<items>
 						<ColumnListItem>
+													
+							<Link text="{path: 'Claimno'}" press="handleLinkPress" />
+							<Text text="{path: 'Claimitem'}" /> 
 						<Text text="{path: 'Pernr'}" /> 
 							<Text text="{path: 'Perna'}" /> 
 							<Text text="{path: 'Kostl'}" />
 							<!-- <Text text="{path: 'Kostl', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'MM/dd/yyyy'}}" /> -->
 							<Text text="{path: 'Ktext'}" />
-							 <Text text="{path: 'Abtei'}" /> 							
-							<Link text="{path: 'Claimno'}" press="handleLinkPress" />
+							 <Text text="{path: 'Abtei'}" /> 
 							<Text text="{path: 'Crtdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />
-							<Text text="{path: 'ExpType'}" />
+							<Text text="{path: 'Exptype'}" />
 							<Text text="{path: 'Saknr'}" />
 							<Text text="{path: 'Stext'}" />
 							<Text text="{path: 'Claimdat', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true, pattern: 'dd.MM.yyyy'}}" />

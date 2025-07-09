@@ -71,10 +71,10 @@ sap.ui.define([
                 }
 
                 if(oModel.ExpenseTo !== ''){
-                    var filter = new sap.ui.model.Filter("ExpType", sap.ui.model.FilterOperator.BT, oModel.ExpenseFrom,oModel.ExpenseTo);
+                    var filter = new sap.ui.model.Filter("Exptype", sap.ui.model.FilterOperator.BT, oModel.ExpenseFrom,oModel.ExpenseTo);
                     aFilters.push(filter);
                 }else if(oModel.ExpenseFrom !== ''){
-                    var filter = new sap.ui.model.Filter("ExpType", sap.ui.model.FilterOperator.EQ, oModel.ExpenseFrom);
+                    var filter = new sap.ui.model.Filter("Exptype", sap.ui.model.FilterOperator.EQ, oModel.ExpenseFrom);
                     aFilters.push(filter);
                 }
 
@@ -114,7 +114,7 @@ sap.ui.define([
                 
                 oExpense.forEach(function (oItem) {
                     if(oItem.Value !== ''){
-                        var filter = new sap.ui.model.Filter("ExpType", sap.ui.model.FilterOperator.EQ, oItem.Value);
+                        var filter = new sap.ui.model.Filter("Exptype", sap.ui.model.FilterOperator.EQ, oItem.Value);
                         aFilters.push(filter);
                     }
                 }.bind(this));
@@ -138,7 +138,7 @@ sap.ui.define([
             var aStandardFilters = oBindingParams.filters;
             var aCustomFilters = this.onGoFilter();
             oBindingParams.filters = aCustomFilters;
-            this.getOdata("/CLAIMREQSet","tabledata",aCustomFilters);
+            this.getOdata("/CRHRDITMSet","tabledata",aCustomFilters);
         },
         onClear: function(oEvent) {
             var sval = {

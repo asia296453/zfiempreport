@@ -234,6 +234,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
         createColumnConfig: function () {
             return [
                 {
+                    label: "Claim Number",
+                    property: 'Claimno'
+                },
+                {
+                    label: "Claim Item",
+                    property: 'Claimitem'
+                },
+                {
                     label: "Employee ID",
                     property: 'Pernr'
                 },
@@ -253,10 +261,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                 }, {
                     label: "Department",
                     property: 'Abtei'
-                },  {
-                    label: "Claim Number",
-                    property: 'Claimno'
-                },{
+                }, {
                     label: "Claim Created Date",
                     property: 'Crtdat',
 					type: EdmType.Date
