@@ -101,7 +101,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
             this.onpressbtn();
         },
         onpressbtn: function () {
-            debugger;
+            
             var ssel = this.getOwnerComponent().getModel("onpress").getProperty("/results");
 
             if (ssel === 'P') {
@@ -174,7 +174,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
         },
      
         handleValueHelpExpType: function (e) {
-            debugger;
+            
             var oexpense = e.getParameter("selectedItems");
             var oval = [];
             oexpense.forEach(function (item) {

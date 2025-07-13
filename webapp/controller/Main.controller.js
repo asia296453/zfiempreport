@@ -130,15 +130,15 @@ sap.ui.define([
                     var filter = new sap.ui.model.Filter("Crtby", sap.ui.model.FilterOperator.EQ, this.suser);
                         aFilters.push(filter);
                 }
-                debugger;
+                
                 return aFilters;
         },
 
         handleLinkPress: function (oevent) {
-            debugger;
+            
             var sclaimno = oevent.getSource().getProperty("text");
             var sstatus = oevent.getSource().getParent().getCells()[16].getText() ; //to fetch status
-            debugger;
+            
             if (sstatus === 'Reopen' &&
                   window.location.href.indexOf("zfiempclaimreq-track") !== -1) {
                     var xnavservice = sap.ushell && sap.ushell.Container && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation");
@@ -153,7 +153,7 @@ sap.ui.define([
                     var sval = href.split("?");
         
                     var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];
-                    debugger;
+                    
                     sap.m.URLHelper.redirect(finalUrl, true);
             }
             else{
@@ -166,7 +166,7 @@ sap.ui.define([
                 href.replaceAll("&sap-app-origin-hint=", "");
             }
             var sval = href.split("?");
-            var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];            debugger;
+            var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];            
             sap.m.URLHelper.redirect(finalUrl, true);
             }
             
