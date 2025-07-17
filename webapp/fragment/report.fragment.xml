@@ -51,13 +51,24 @@ xmlns:l="sap.ui.layout"
 					</Button>
 
 				<Label text="{i18n>Expense}" />
-				<Input  value="{LocalModel>/results/ExpenseFrom}"  />
+				<!-- <Input  value="{LocalModel>/results/ExpenseFrom}"  /> -->
+				<Input required="true"
+							value="{LocalModel>/results/ExpenseFrom}"
+							 showValueHelp="true"
+								valueHelpRequest="onOpenExpType"
+								valueHelpOnly="false"
+						   />
 				<Text text="To"  class="zto">
 				<layoutData>
 						<l:GridData span="XL1 L1 M1 S1" />
 					</layoutData>
 					</Text>
-                <Input  value="{LocalModel>/results/ExpenseTo}" >
+               
+				<Input required="true"
+							value="{LocalModel>/results/ExpenseTo}"
+							 showValueHelp="true"
+								valueHelpRequest="onOpenExpType1"
+								valueHelpOnly="false">
 					<layoutData>
 						<l:GridData span="XL1 L2 M2 S1" />
 					</layoutData>

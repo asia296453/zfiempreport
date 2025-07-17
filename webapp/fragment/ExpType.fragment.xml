@@ -5,8 +5,7 @@
                   search=".onSearchExpType"
                   confirm="handleValueHelpExpType"
                   cancel="onCloseExpType"
-                  items="{path:'ExpType>/results'}"
-				  multiSelect="true">
+                  items="{path:'ExpType>/results'}">
         <StandardListItem title="{ExpType>ExpType}" description="{ExpType>ExpName}"/>
     </SelectDialog>
 

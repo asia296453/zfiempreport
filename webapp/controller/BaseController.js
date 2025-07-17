@@ -170,18 +170,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                 this.getView().addDependent(this.ExpType);
             };            
             this.getOdata("/EXPTYPESet","ExpType",null);
+            this.extyp = 'From';
             this.ExpType.open();
         },
-     
+        onOpenExpType1: function (oEvent) {
+            if (!this.ExpType) {
+                this.ExpType = sap.ui.xmlfragment("zfiempreport.fragment.ExpType", this);
+                this.getView().addDependent(this.ExpType);
+            };            
+            this.getOdata("/EXPTYPESet","ExpType",null);
+            this.extyp = 'To';
+            this.ExpType.open();
+        },
         handleValueHelpExpType: function (e) {
             
-            var oexpense = e.getParameter("selectedItems");
-            var oval = [];
-            oexpense.forEach(function (item) {
-                oval.push(item.getTitle());
-            });
-            this.getOwnerComponent().getModel("LocalModel").getData().results.Expense = oval.join(",");
-            this.getOwnerComponent().getModel("LocalModel").refresh(true);
+            var sexpense = e.getParameter("selectedItem").getProperty("title");
+            if(this.extyp === 'From'){
+                this.getOwnerComponent().getModel("LocalModel").getData().results.ExpenseFrom = sexpense;
+                this.getOwnerComponent().getModel("LocalModel").refresh(true);
+                this.extyp = "";
+            }
+            else if(this.extyp === 'To'){
+                this.getOwnerComponent().getModel("LocalModel").getData().results.ExpenseTo = sexpense;
+                this.getOwnerComponent().getModel("LocalModel").refresh(true);
+                this.extyp = "";
+            }
+            
             //    this.showBusy(true);
         //     this.getView().getModel().read("/EXPTYPESet(ExpType='" + e.getParameter("selectedItem").getProperty("title") + "')", {
         //            // filters: [oFilter],
