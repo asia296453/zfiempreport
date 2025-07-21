@@ -36,9 +36,7 @@ sap.ui.define([
             if (sap.ushell !== undefined) {
                 this.suser = sap.ushell.Container.getService("UserInfo").getId();
             }
-            if (this.suser === '') {
-                this.suser = 'NTT_VENU';
-            }
+           
 
 
              this.stype = '';
@@ -137,10 +135,21 @@ sap.ui.define([
         handleLinkPress: function (oevent) {
             
             var sclaimno = oevent.getSource().getProperty("text");
-            var sstatus = oevent.getSource().getParent().getCells()[16].getText() ; //to fetch status
-            
-            if (sstatus === 'Reopen' &&
-                  window.location.href.indexOf("zfiempclaimreq-track") !== -1) {
+            var sstatus = '';//oevent.getSource().getParent().getCells()[16].getText() ; //to fetch status
+            var scrtby = '';
+            var oData = this.getView().getModel("tabledata").getProperty("/results");
+            if (oData && oData.length > 0) {
+                var selCurrncRow = oData.filter(function (el) {
+                    return el.Claimno === sclaimno;
+                });
+            }
+            if (selCurrncRow.length > 0) {
+                sstatus = selCurrncRow[0].Status;
+                scrtby = selCurrncRow[0].Crtby;
+            } 
+
+            if (sstatus === 'RE' &&
+                this.suser === scrtby) {
                     var xnavservice = sap.ushell && sap.ushell.Container && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation");
                     var href = (xnavservice && xnavservice.hrefForExternal({
                         target: { semanticObject: "zfiempclaimreq", action: "create" },

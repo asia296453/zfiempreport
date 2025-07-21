@@ -52,8 +52,7 @@ xmlns:l="sap.ui.layout"
 
 				<Label text="{i18n>Expense}" />
 				<!-- <Input  value="{LocalModel>/results/ExpenseFrom}"  /> -->
-				<Input required="true"
-							value="{LocalModel>/results/ExpenseFrom}"
+				<Input  value="{LocalModel>/results/ExpenseFrom}"
 							 showValueHelp="true"
 								valueHelpRequest="onOpenExpType"
 								valueHelpOnly="false"
@@ -64,8 +63,7 @@ xmlns:l="sap.ui.layout"
 					</layoutData>
 					</Text>
                
-				<Input required="true"
-							value="{LocalModel>/results/ExpenseTo}"
+				<Input value="{LocalModel>/results/ExpenseTo}"
 							 showValueHelp="true"
 								valueHelpRequest="onOpenExpType1"
 								valueHelpOnly="false">
