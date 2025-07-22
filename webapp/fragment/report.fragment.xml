@@ -100,7 +100,8 @@ xmlns:l="sap.ui.layout"
 			value= "{
 				'type': 'sap.ui.model.type.DateInterval',
 				'formatOptions': {
-					'pattern': 'dd/MM/yyyy'
+					'pattern': 'dd/MM/yyyy',
+                            'UTC': true
 				},
 				'parts': [
 					{
@@ -150,6 +151,9 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 				<Table growing="true" growingThreshold="20" growingScrollToLoad="true" rememberSelections="false"
 					 >
 					<columns>
+					<Column visible="{Header>/data/employee}">
+							<Text text="" />
+						</Column>
 					<Column>
 							<customData>
 								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 1, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
@@ -268,7 +272,7 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 					</columns>
 					<items>
 						<ColumnListItem>
-													
+							<Button visible="{Header>/data/employee}" text="Repost" press="onRepost" enabled="{parts:[{path:'Status'},{path:'Belnr'}], formatter:'.updateButton'}"/>					
 							<Link text="{path: 'Claimno'}" press="handleLinkPress" />
 							<Text text="{path: 'Claimitem'}" /> 
 						<Text text="{path: 'Pernr'}" /> 
