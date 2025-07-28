@@ -37,6 +37,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
         getResourceBundle: function (sText) {
             return this.getOwnerComponent().getModel("i18n").getResourceBundle()
         },
+        
         onAddrowPernr: function (oEvent) {            
             var ssel = this.getOwnerComponent().getModel("onpress").getProperty("/results");
             var sval = {
