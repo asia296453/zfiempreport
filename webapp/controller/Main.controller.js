@@ -186,7 +186,7 @@ sap.ui.define([
                     }
                     var sval = href.split("?");
         
-                    var finalUrl = window.location.href.split("#")[0] + "?&"+sval[1]+sval[0];
+                    var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];
                     
                     sap.m.URLHelper.redirect(finalUrl, true);
             }
@@ -200,7 +200,7 @@ sap.ui.define([
                 href.replaceAll("&sap-app-origin-hint=", "");
             }
             var sval = href.split("?");
-            var finalUrl = window.location.href.split("#")[0] + "?&"+sval[1]+sval[0];            
+            var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];            
             sap.m.URLHelper.redirect(finalUrl, true);
             }
             
