@@ -181,14 +181,8 @@ sap.ui.define([
                         params: { "Claimno": sclaimno }
                     })) || "";
                     
-                    if (href.indexOf("&sap-app-origin-hint=") !== -1) {
-                        href.replaceAll("&sap-app-origin-hint=", "");
-                    }
-                    var sval = href.split("?");
-        
-                    var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];
-                    
-                    sap.m.URLHelper.redirect(finalUrl, true);
+                     var finalUrl = this.formurl(href); 
+                    sap.m.URLHelper.redirect(finalUrl, true);      
             }
             else{
                 var xnavservice = sap.ushell && sap.ushell.Container && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation");
@@ -196,16 +190,28 @@ sap.ui.define([
                 target: { semanticObject: "zfiempclaimreq", action: "lookup" },
                 params: { "Claimno": sclaimno }
             })) || "";
-            if (href.indexOf("&sap-app-origin-hint=") !== -1) {
+            
+            }
+             var finalUrl = this.formurl(href); 
+            sap.m.URLHelper.redirect(finalUrl, true);            
+        },
+        formurl:function(href){
+            if (href.indexOf("sap-app-origin-hint=") !== -1) {
                 href.replaceAll("&sap-app-origin-hint=", "");
             }
             var sval = href.split("?");
-            var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];            
-            sap.m.URLHelper.redirect(finalUrl, true);
+            if(window.location.href.indexOf("sap-client") !== -1){
+                var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];   
+            }else if(window.location.href.indexOf("?saml2=disabled") !== -1){
+                var finalUrl = window.location.href.split("#")[0] + "&"+sval[1]+sval[0];   
             }
-            
-
-            
+            else{
+                var finalUrl = window.location.href.split("#")[0] + "?"+sval[1]+sval[0];   
+                if(finalUrl.indexOf("??") !== -1){
+                     finalUrl.replaceAll("??","?");
+                }
+            }                     
+            return finalUrl;
         },
         onBeforeRebindTable: function(oEvent) {
             var oBindingParams = oEvent.getParameter("bindingParams");
