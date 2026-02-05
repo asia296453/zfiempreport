@@ -80,6 +80,24 @@ sap.ui.define([
                         }.bind(this)
                     });
         },
+        onDelete: function(e) {
+            debugger;
+            var srow = e.getSource().getBindingContext().getObject();
+            delete srow.__metadata;
+            e.getSource().getParent().getCells()[0].setEnabled(false);
+                srow.Status = 'DL';
+               this.showBusy(true);
+                    this.getModel().create("/CRHRDITMSet", srow, {
+                        method: "POST",
+                        success: function (oData) {
+                            this.showBusy(false);
+                            
+                        }.bind(this),
+                        error: function (oError) {
+                            this.showBusy(false);
+                        }.bind(this)
+                    });
+        },
         onGoFilter: function() {
                 
                 var aFilters = [];

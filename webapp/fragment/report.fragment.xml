@@ -154,6 +154,9 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 					<Column visible="{Header>/data/employee}">
 							<Text text="" />
 						</Column>
+							<Column visible="{Header>/data/employee}">
+							<Text text="" />
+						</Column>
 					<Column>
 							<customData>
 								<core:CustomData key="p13nData" value='\{"columnKey": "Claimno", "columnIndex": 1, "leadingProperty": "Claimno", "sortProperty": "Claimno", "filterProperty": "Claimno" , "type":"date"}' />
@@ -273,6 +276,7 @@ smartFilterId="smartFilterBar" smartVariant="smartVariant" persistencyKey="zflee
 					<items>
 						<ColumnListItem>
 							<Button visible="{Header>/data/employee}" text="Repost" press="onRepost" enabled="{parts:[{path:'Status'},{path:'Belnr'}], formatter:'.updateButton'}"/>					
+							<Button  visible="{Header>/data/employee}" text="Delete" press="onDelete" enabled="{parts:[{path:'Status'},{path:'Belnr'}], formatter:'.updateButton'}"/>
 							<Link text="{path: 'Claimno'}" press="handleLinkPress" />
 							<Text text="{path: 'Claimitem'}" /> 
 						<Text text="{path: 'Pernr'}" /> 
